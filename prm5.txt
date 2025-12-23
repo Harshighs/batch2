@@ -1,0 +1,49 @@
+ALGORITHM: 
+START 
+Step 1:[Input value of degree] 
+Read degree 
+Step 2:[Input value of limit] 
+Read n 
+Step 3: [Convert degree to radians] 
+X=(degree *PI)/180 
+Step 4: [InitialCSE] 
+term =x 
+sum=term 
+Step 5: [Calcuate each term and add] 
+term=-term*x*x/((i-1)*i); 
+sum=sum+term; 
+Step 6: [Print the output] 
+Print the sine value for the given degree 
+STOP 
+                                                                                      
+ A sensor in a robotic arm needs to calculate the angle of rotation in real-time, but the 
+hardware doesn't support built-in trigonometric functions. Develop a C program to 
+approximate the value of sin(x) using a series expansion method for improved performance. 
+
+
+
+ 
+PROGRAM: 
+#include<stdio.h> 
+#include<math.h> 
+int main()  
+{ 
+int i, degree; 
+float x, sum=0,term,n; 
+printf("Enter the value of degree"); 
+scanf("%d",&degree); 
+printf("Enter the limit upto which the Taylor's series is to be calculated:"); 
+scanf("%d",&n); 
+x = degree * (3.1416/180); 
+term = x; 
+sum=term; 
+for (i=3;i<=n;i+=2) 
+{ 
+term=-term*x*x/((i-1)*i); 
+sum=sum+term; 
+} 
+printf("The sine of %d is %.3f\n", degree, sum); 
+printf("The sine function of %d using library function is  
+%.3f", degree, sin(x));  
+return 0; 
+}
